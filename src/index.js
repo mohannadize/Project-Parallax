@@ -9,7 +9,7 @@ function Intro() {
         <p>Welcome to the parallax Gallery Project.</p>
         <p>
             This Project aims to extend the experience of art by intruducing a new 3d interactive dimention.
-            The Photos are edited using photoshop into depth layers then with the help of <a target="_blank" href="https://github.com/wagerfield/parallax">Parallax.js</a>, we can take benifit of these layers.
+            The Photos are edited using photoshop into depth layers then with the help of <a rel="noopener noreferrer" target="_blank" href="https://github.com/wagerfield/parallax">Parallax.js</a>, we can take benifit of these layers.
         </p>
     </div>)
 }
