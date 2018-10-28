@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Parallax from "parallax-js";
 import gallery from './gallery';
+import * as Vibrant from 'node-vibrant';
 
 function Intro() {
     return (<div>
@@ -22,11 +23,16 @@ class Gallery extends React.Component {
             let artist = gallery[name].artist;
             let dir = name.split(" ").join("");
             let imgs = gallery[name].layers;
+            let color = new Vibrant(`images/${dir}/base.png`);
+            color.getPalette().then(x=>{
+                let elem = document.querySelector("#"+dir);
+                elem.style.borderColor = x.DarkMuted.getHex();
+            });
             return (
-                <div>
+                <div key={counter.toString()}>
                     <h3>{name}</h3>
                     <p>{artist}</p>
-                    <div className="parallax" key={dir} id={dir}>
+                    <div className="parallax" key={dir} id={dir} >
                         {imgs.map(x=>{
                             counter++;
                             return (<img alt="An error has occured"
@@ -42,7 +48,7 @@ class Gallery extends React.Component {
         return (haha)
     }
 }
-
+//
 function Page() {
     return (<div>
         <Intro />
@@ -60,7 +66,7 @@ for (let name of keys) {
     let dir = name.split(" ").join("");
     const scene = document.getElementById(dir);
     // eslint-disable-next-line
-    const parallaxinstance = new Parallax(scene,{
+    new Parallax(scene,{
         relativeInput:true,
         hoverOnly:true
     });    

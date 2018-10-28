@@ -4,7 +4,7 @@ body {
     width:700px;
     margin:auto;
     font-family: "Montserrat";
-    padding: 15px;
+    padding: 14px;
     box-sizing: border-box;
 }
 h1,p {
@@ -24,6 +24,10 @@ a:hover {
     width:100%;
     overflow: hidden;
     margin: auto;
+    border: 15px solid #222;
+    transition: all 500ms ease-in-out;
+    box-shadow: 0 8px 30px -5px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.5);
+    box-sizing: border-box;
 }
 .parallax img {
     width: 100%;

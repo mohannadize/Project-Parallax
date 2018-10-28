@@ -1,7 +1,7 @@
 {
   "name": "Project-Parallax",
   "version": "0.1.1",
-  "homepage" : "https://mohannadize.github.io/Project-Parallax",
+  "homepage": "https://mohannadize.github.io/Project-Parallax",
   "dependencies": {
     "parallax-js": "^3.1.0",
     "react": "^16.4.2",
@@ -15,5 +15,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "node-vibrant": "^3.0.0"
   }
 }
