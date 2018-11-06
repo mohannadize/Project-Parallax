@@ -37,7 +37,7 @@ class Gallery extends React.Component {
                             counter++;
                             return (<img alt="An error has occured"
                                         key={counter.toString()}
-                                        data-depth={counter / 5}
+                                        data-depth={counter / 10}
                                         src={"images/"+dir+"/"+x} />)
                         })}
                     </div>
