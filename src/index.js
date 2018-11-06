@@ -68,6 +68,7 @@ for (let name of keys) {
     // eslint-disable-next-line
     new Parallax(scene,{
         relativeInput:true,
-        hoverOnly:true
+        hoverOnly:true,
+        limitY: 0
     });    
 }
