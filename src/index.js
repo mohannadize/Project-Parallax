@@ -18,30 +18,30 @@ function Intro() {
 let keys = Object.keys(gallery);
 class Gallery extends React.Component {
     render() {
-        let counter = 0;
-        let haha = keys.map(name=>{
+        let haha = keys.map((name)=>{
+            let counter = 0;
             let artist = gallery[name].artist;
-            let dir = name.split(" ").join("");
+            let dir = name;
             let imgs = gallery[name].layers;
-            let color = new Vibrant(`images/${dir}/base.png`);
+            let color = new Vibrant(`images/${dir}/${imgs[0]}`);
             color.getPalette().then(x=>{
                 let elem = document.querySelector("#"+dir);
-                elem.style.borderColor = x.DarkMuted.getHex();
+                elem.style.borderColor = x.DarkMuted ? x.DarkMuted.getHex() : "#222";
             });
             return (
-                <div key={counter.toString()}>
-                    <h3>{name}</h3>
+                <div key={dir+counter.toString()}>
+                    <h3>{name.split("_").join(" ")}</h3>
                     <p>{artist}</p>
                     <div className="parallax" key={dir} id={dir} >
                         {imgs.map(x=>{
                             counter++;
                             return (<img alt="An error has occured"
-                                        key={counter.toString()}
-                                        data-depth={counter / 10}
+                                        data-depth={counter / 5}
+                                        key={dir+counter.toString()}
                                         src={"images/"+dir+"/"+x} />)
                         })}
                     </div>
-                    <a href={gallery[name].link} target="_blank" rel="noopener noreferrer" style={{display:"inline-block",margin:"10px"}}>Wiki</a>
+                    <a href={gallery[name].link} target="_blank" rel="noopener noreferrer" style={{display:"inline-block",margin:"10px"}}>More Info</a>
                 </div>
             )
         });
@@ -69,6 +69,7 @@ for (let name of keys) {
     new Parallax(scene,{
         relativeInput:true,
         hoverOnly:true,
-        limitY: 0
+        limitY: 4,
+        limitX: 10
     });    
 }
