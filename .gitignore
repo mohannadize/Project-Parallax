@@ -7,8 +7,10 @@
 /coverage
 
 # production
-/build
-/public/images
+/dev
+/build/images
+/src/images
+
 
 # misc
 .DS_Store
@@ -17,6 +19,7 @@
 .env.test.local
 .env.production.local
 react.README.md
+.vscode
 
 npm-debug.log*
 yarn-debug.log*

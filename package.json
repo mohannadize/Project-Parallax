@@ -1,22 +1,30 @@
 {
   "name": "Project-Parallax",
-  "version": "0.1.1",
+  "description": "2.5D Art Project.",
+  "version": "0.2",
   "homepage": "https://mohannadize.github.io/Project-Parallax",
-  "dependencies": {
-    "parallax-js": "^3.1.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+  "author": "Mohanad Hesham",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohannadize/project-parallax"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "bugs": {
+    "url": "https://github.com/mohannadizeproject-parallax/issues"
+  },
+  "dependencies": {
+    "node-vibrant": "^3.0.0",
+    "parallax-js": "^3.1.0"
   },
   "devDependencies": {
-    "node-vibrant": "^3.0.0"
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglifyes": "^0.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-uglifycss": "^1.1.0",
+    "compress-images": "^1.4.6"
   }
 }

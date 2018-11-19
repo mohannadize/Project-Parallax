@@ -17,5 +17,6 @@ I start this project using `react-js` as a fun project to learn react but I'm wi
 ## Credits
 
 This project could not be possible without
+
 - [Parallax.js by @wagerfield](https://github.com/wagerfield/parallax)
 - [Reactjs by @facebook](https://github.com/facebook/react)
