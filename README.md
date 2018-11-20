@@ -8,12 +8,11 @@ Art submission can be done by sending me an email at [mohannadize15@gmail.com](m
 
 Example for the depth layers can be found in the examples folder.
 
-
 ## Installation
 
-Clone this repository then run in the `project-parallax` directory.
+Clone this repository then run this command in the `project-parallax` directory.
 
-```
+```cli
 npm install
 ```
 
@@ -21,13 +20,13 @@ npm install
 
 Run development mode with live refresh by
 
-```
+```cli
 gulp dev
 ```
 
 Make sure you have `gulp` installed globally. If it is not, run 
 
-```
+```cli
 npm i gulp -g
 ```
 
@@ -37,11 +36,11 @@ from the command line.
 
 Generate a build by
 
-```
+```cli
 gulp build
 ```
 
-the new build will be genrated in a `build` directory.
+the new build will be generated in a `build` directory.
 
 ### Disclaimer
 

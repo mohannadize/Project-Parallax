@@ -15,4 +15,3 @@ const gallery = {
         "layers":["base.jpg","top.png"]
     }
 }
-export default gallery;

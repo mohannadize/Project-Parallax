@@ -1,21 +1,18 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import "./index.css";
-// import Parallax from "parallax-js";
-// import gallery from './gallery';
-// import * as Vibrant from 'node-vibrant';
+let Vibrant = require("node-vibrant");
 
-// function Intro() {
-//     return (<div>
-//         <h1>The Parallax Gallery Project</h1>
-//         <p>Welcome to the parallax Gallery Project.</p>
-//         <p>
-//             This Project aims to extend the experience of art by intruducing a new 3d interactive dimension.
-//             The Photos are edited using photoshop into depth layers then with the help of <a rel="noopener noreferrer" target="_blank" href="https://github.com/wagerfield/parallax">Parallax.js</a>, we can take benifit of these layers.
-//         </p>
-//     </div>)
-// }
-// let keys = Object.keys(gallery);
+let arts = Object.keys(gallery);
+
+arts.map(name=>{
+    let counter = 0;
+    let artist = gallery[name].artist;
+    let dir = name;
+    let imgs = gallery[name].layers;
+    // let color = new Vibrant(`images/${dir}/${imgs[0]}`);
+
+
+})
+
+
 // class Gallery extends React.Component {
 //     render() {
 //         let haha = keys.map((name)=>{
