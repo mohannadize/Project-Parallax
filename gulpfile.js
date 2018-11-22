@@ -1,11 +1,13 @@
 const gulp = require("gulp")
-const concat = require("gulp-concat")
-const uglify = require("gulp-uglifyes")
+const uglify = require("gulp-terser")
 const uglifycss = require("gulp-uglifycss")
 const autoprefix = require("gulp-autoprefixer")
 const sass = require("gulp-sass")
 const compress_images = require('compress-images')
 const browserSync = require("browser-sync").create()
+const browserify = require("browserify")
+const source = require("vinyl-source-stream")
+const streamify = require("gulp-streamify")
 
 
 gulp.task("images",(x)=>{
@@ -36,11 +38,25 @@ gulp.task("styles",()=>{
         .pipe(gulp.dest("dev/css"))
 })
 
+gulp.task("js-dev",()=>{
+    return browserify("src/js/index.js")
+        .transform("babelify", {
+            presets: ["@babel/preset-env"],
+        })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./dev/js/'));
+})
+
 gulp.task("js",()=>{
-    return gulp.src("src/js/**/*.js")
-        .pipe(concat("app.js"))
-        .pipe(uglify())
-        .pipe(gulp.dest("dev/js"))
+    return browserify("src/js/index.js")
+        .transform("babelify", {
+            presets: ["@babel/preset-env"],
+        })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(streamify(uglify()))
+        .pipe(gulp.dest('./dev/js/'));
 })
 
 gulp.task("html", function () {
@@ -48,13 +64,13 @@ gulp.task("html", function () {
         .pipe(gulp.dest("./dev/"));
 })
 
-gulp.task("dev",gulp.series("html","styles","js",()=>{
+gulp.task("dev",gulp.series("html","styles","js-dev",()=>{
     browserSync.init({
         server:"./dev/"
     })
 
     gulp.watch("src/**/*.html").on('change', gulp.series("html", browserSync.reload));
-    gulp.watch("src/js/**/*.js").on('change', gulp.series("js", browserSync.reload));
+    gulp.watch("src/js/**/*.js").on('change', gulp.series("js-dev", browserSync.reload));
     gulp.watch("src/sass/**/*.scss").on("change", gulp.series("styles", browserSync.reload));
     // gulp.watch("src/sw.js").on("change", gulp.series("sw", browserSync.reload));
 }))

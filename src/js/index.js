@@ -1,6 +1,10 @@
-let Vibrant = require("node-vibrant");
+// Vibrant = require("node-vibrant");
+// import Vibrant from "node-vibrant";
+import gallery from "./gallery";
+
 
 let arts = Object.keys(gallery);
+console.log(gallery)
 
 arts.map(name=>{
     let counter = 0;

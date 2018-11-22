@@ -1,7 +1,7 @@
 {
   "name": "Project-Parallax",
   "description": "2.5D Art Project.",
-  "version": "0.2",
+  "version": "0.2.0",
   "homepage": "https://mohannadize.github.io/Project-Parallax",
   "author": "Mohanad Hesham",
   "license": "MIT",
@@ -17,16 +17,19 @@
     "parallax-js": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.26.3",
+    "browserify": "^16.2.3",
+    "compress-images": "^1.4.6",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-uglifyes": "^0.2.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1",
+    "gulp-streamify": "^1.0.2",
+    "gulp-terser": "^1.1.5",
     "gulp-uglifycss": "^1.1.0",
-    "compress-images": "^1.4.6",
-    "vinyl-source-stream": "^2.0.0",
-    "browserify": "^16.2.3"
+    "vinyl-source-stream": "^2.0.0"
   }
 }
