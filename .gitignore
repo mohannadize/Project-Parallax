@@ -8,8 +8,9 @@
 
 # production
 /dev
-/build/images
+/dev/imgs
 /src/images
+/log
 
 
 # misc
