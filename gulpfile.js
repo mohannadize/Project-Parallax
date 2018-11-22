@@ -8,7 +8,7 @@ const browserSync = require("browser-sync").create()
 const browserify = require("browserify")
 const source = require("vinyl-source-stream")
 const streamify = require("gulp-streamify")
-
+let build = "dev";
 
 gulp.task("images",(x)=>{
      
@@ -27,6 +27,8 @@ gulp.task("images",(x)=>{
 })
 
 gulp.task("styles",()=>{
+    let dist = build === "dev" ? "dev" : "docs";
+
     return gulp.src("src/sass/**/*.scss")
         .pipe(sass().on("error",sass.logError))
         .pipe(autoprefix({
@@ -35,44 +37,38 @@ gulp.task("styles",()=>{
         .pipe(uglifycss({
             "maxLineLen":500
         }))
-        .pipe(gulp.dest("dev/css"))
-})
-
-gulp.task("js-dev",()=>{
-    return browserify("src/js/index.js")
-        .transform("babelify", {
-            presets: ["@babel/preset-env"],
-        })
-        .bundle()
-        .pipe(source('app.js'))
-        .pipe(gulp.dest('./dev/js/'));
+        .pipe(gulp.dest(dist+"/css"))
 })
 
 gulp.task("js",()=>{
-    return browserify("src/js/index.js")
+    let dist = build === "dev" ? "dev" : "docs";
+    let stream = browserify("src/js/index.js")
         .transform("babelify", {
             presets: ["@babel/preset-env"],
         })
         .bundle()
-        .pipe(source('app.js'))
-        .pipe(streamify(uglify()))
-        .pipe(gulp.dest('./dev/js/'));
+        .pipe(source('app.js'));
+    if (build === "prod") {
+        stream.pipe(streamify(uglify()))
+    }
+    return stream.pipe(gulp.dest(dist+'/js/'));
 })
 
 gulp.task("html", function () {
+    let dist = build === "dev" ? "dev" : "docs";
     return gulp.src("src/**/*.html")
-        .pipe(gulp.dest("./dev/"));
+        .pipe(gulp.dest(dist+"/"));
 })
 
-gulp.task("dev",gulp.series("html","styles","js-dev",()=>{
+gulp.task("dev",gulp.series("html","styles","js",()=>{
     browserSync.init({
         server:"./dev/"
     })
 
     gulp.watch("src/**/*.html").on('change', gulp.series("html", browserSync.reload));
-    gulp.watch("src/js/**/*.js").on('change', gulp.series("js-dev", browserSync.reload));
+    gulp.watch("src/js/**/*.js").on('change', gulp.series("js", browserSync.reload));
     gulp.watch("src/sass/**/*.scss").on("change", gulp.series("styles", browserSync.reload));
     // gulp.watch("src/sw.js").on("change", gulp.series("sw", browserSync.reload));
 }))
 
-gulp.task("build",gulp.series("html","styles","js"))
+gulp.task("build",gulp.series((x)=>{build = "prod";x()},"html","styles","js"))

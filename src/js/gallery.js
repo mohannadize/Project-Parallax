@@ -9,7 +9,7 @@ const gallery = {
         "artist": "Katsushika Hokusai",
         "layers":["base.jpg","top.png"]
     },
-    "Girl_with_Mandolin": {
+    "Girl_with_a_Mandolin": {
         "link": "https://www.pablopicasso.org/girl-with-mandolin.jsp",
         "artist": "Pablo Picasso",
         "layers":["base.jpg","top.png"]
